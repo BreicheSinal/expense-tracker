@@ -1,0 +1,45 @@
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-self {
+  align-self: center;
+}
+
+.full-viewport {
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.relative-position {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gap {
+  gap: 10px;
+}

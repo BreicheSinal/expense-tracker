@@ -1,0 +1,16 @@
+.login {
+  gap: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.login p {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.login input {
+  width: 300px;
+}

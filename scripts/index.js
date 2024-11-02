@@ -1,5 +1,6 @@
-incomeBttn.addEventListener("click", () => {
+/*incomeBttn.addEventListener("click", () => {
   window.location.href = "./pages/income.html";
 });
 
 console.log("hiii");
+*/
