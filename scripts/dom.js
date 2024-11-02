@@ -15,3 +15,5 @@ const type = document.getElementById("typeTransaction");
 const name = document.getElementById("nameTransaction");
 const amount = document.getElementById("amountTransaction");
 const note = document.getElementById("noteTransaction");
+
+const transactionsList = document.getElementById("transactions");
