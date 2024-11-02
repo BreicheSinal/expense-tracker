@@ -19,7 +19,9 @@
         class="full-size overflow-hidden relative-position"
       />
 
-      <div class="flex column center white-color login ">
+      <div id="errorMsg" class="center errorMsg primary-color"></div>
+
+      <div class="flex column center white-color login">
         <img
           src="/assets/icons/LOGO.png"
           alt="LOGO"
@@ -29,18 +31,17 @@
         />
         <div class="flex column gap">
           <p>Usename</p>
-          <input type="text" placeholder="Username" id="d"/>
+          <input type="text" placeholder="Username" id="username"/>
         </div>
 
         <div class="flex column gap">
           <p>Password</p>
-          <input type="password" placeholder="Password" id="s" />
+          <input type="password" placeholder="Password" id="password" />
         </div>
 
-        <button>
+        <button id="loginBttn">
             LOG IN
         </button>
-
     </div>
 
     <!--<button id="expenseBttn">EXPENSE</button>

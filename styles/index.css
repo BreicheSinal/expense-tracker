@@ -14,3 +14,19 @@
 .login input {
   width: 300px;
 }
+
+.errorMsg {
+  font-weight: bold;
+  display: none;
+  text-align: center;
+  font-size: 25px;
+  z-index: 2;
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 450px;
+}
+
+.login > button {
+  margin: 10px 0px 15px 0px;
+}
