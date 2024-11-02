@@ -33,7 +33,7 @@ function displayTransaction() {
   transactionsList.innerHTML = "";
 
   // ADD ALL TRANSACTIONS
-  transactions.forEach((transaction) => {
+  transactions.forEach((transaction, id) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${transaction.dateInput}</td>
@@ -41,11 +41,33 @@ function displayTransaction() {
       <td>${transaction.nameInput}</td>
       <td>${transaction.amountInput}</td>
       <td>${transaction.noteInput}</td>
+      <td><button class="tableBttn full-width" onclick="editTransaction(${id})">Edit</button></td>
+      <td><button class="tableBttn full-width" onclick="deleteTransaction(${id})">Delete</button></td>
       `;
     transactionsList.appendChild(row);
     console.log(transactions);
   });
 }
 
+function deleteTransaction(id) {
+  transactions.splice(id, 1);
+  saveTransactions();
+  displayTransaction();
+}
+
+function editTransaction(id) {
+  const transaction = transactions[id];
+
+  document.getElementById("dateTransaction").value = transaction.dateInput;
+  document.getElementById("typeTransaction").value = transaction.typeInput;
+  document.getElementById("nameTransaction").value = transaction.nameInput;
+  document.getElementById("amountTransaction").value = transaction.amountInput;
+  document.getElementById("noteTransaction").value = transaction.noteInput;
+
+  deleteTransaction(id);
+}
+
+// DISPLAYS TRANSACTION ON RELOAD
+displayTransaction();
 //console.log(transactions);
 //localStorage.clear();
