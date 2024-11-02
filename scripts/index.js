@@ -26,5 +26,5 @@ loginBttn.addEventListener("click", () => {
     setTimeout(() => {
       errorMsg.style.display = "none";
     }, 1500);
-  } else window.location.href = "./pages/expenseTracker.html";
+  } else window.location.href = "./pages/tracker.html";
 });

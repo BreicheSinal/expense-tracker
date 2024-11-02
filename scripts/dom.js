@@ -7,3 +7,11 @@ const errorMsg = document.getElementById("errorMsg");
 // EXPENSE TRACKER PAGE
 const expenseBttn = document.getElementById("expenseBttn");
 const incomeBttn = document.getElementById("incomeBttn");
+const totalBttn = document.getElementById("totalBttn");
+const addBttn = document.getElementById("addBttn");
+
+const date = document.getElementById("dateTransaction");
+const type = document.getElementById("typeTransaction");
+const name = document.getElementById("nameTransaction");
+const amount = document.getElementById("amountTransaction");
+const note = document.getElementById("noteTransaction");

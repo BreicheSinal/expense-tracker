@@ -5,8 +5,9 @@
   font-family: "Robot";
 }
 
+select,
 input {
-  border: 2px solid white;
+  border: 2px solid #00599c;
   border-radius: 10px;
   padding: 7px;
   opacity: 60%;

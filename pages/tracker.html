@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/utilities.css" />
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/fonts.css" />
+    <link rel="stylesheet" href="/styles/tracker.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+  </head>
+  <body>
+    <section class="full-viewport flex">
+      <div
+        class="sidebar flex column full-height primary-bgColor space-evenly align-center"
+      >
+        <img
+          src="/assets/icons/income.png"
+          alt="Income Icon"
+          width="100px"
+          height="100px"
+          id="incomeBttn"
+        />
+
+        <img
+          src="/assets/icons/spending.png"
+          alt="Spending Icon"
+          width="100px"
+          height="100px"
+          id="expenseBttn"
+        />
+        <img
+          src="/assets/icons/all.png"
+          alt="Spending Icon"
+          width="100px"
+          height="100px"
+          id="totalBttn"
+        />
+      </div>
+
+      <div class="container flex column">
+        <div class="flex space-between">
+          <h1 class="primary-color">EXPENSES TRACKER</h1>
+          <div class="flex gap justify-center align-center">
+            <div>
+              <p class="bold">TYPE FILTER</p>
+              <select id="filterType">
+                <option value="all">All</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+              </select>
+            </div>
+            <div>
+              <p class="bold">PRICE FILTER</p>
+              <select id="filterPrice">
+                <option value="None">None</option>
+                <option value="Minimum">Minimum</option>
+                <option value="Maximum">Maximum</option>
+              </select>
+            </div>
+            <div>
+              <p class="bold">DATE FILTER</p>
+              <select id="filterPrice">
+                <option value="None">None</option>
+                <option value="all">Minimum</option>
+                <option value="income">Maximum</option>
+              </select>
+            </div>
+            <button>Apply</button>
+          </div>
+        </div>
+
+        <div class="flex align-center gap">
+          <div>
+            <p class="bold">DATE</p>
+            <input type="date" id="dateTransaction" />
+          </div>
+          <div>
+            <p class="bold">TYPE</p>
+            <select id="typeTransaction">
+              <option value="income">INCOME</option>
+              <option value="income">EXPENSE</option>
+            </select>
+          </div>
+          <div>
+            <p class="bold">NAME</p>
+            <input
+              type="text"
+              id="nameTransaction"
+              placeholder="Transaction Name"
+            />
+          </div>
+          <div>
+            <p class="bold">AMOUNT</p>
+            <input type="number" id="amountTransaction" placeholder="Amount" />
+          </div>
+          <div>
+            <p class="bold">NOTE</p>
+            <input type="text" id="noteTransaction" placeholder="Notes" />
+          </div>
+          <button class="button" id="addBttn">ADD</button>
+        </div>
+
+        <table class="full-width">
+          <thead>
+            <tr>
+              <th>DATE</th>
+              <th>TYPE</th>
+              <th>NAME</th>
+              <th>AMOUNT</th>
+              <th>NOTE</th>
+            </tr>
+          </thead>
+
+          <tbody id="transactions"></tbody>
+        </table>
+
+        <!--<div class="total">Total Budget: $<span id="totalBudget">0</span></div>-->
+      </div>
+    </section>
+
+    <script src="/scripts/dom.js"></script>
+    <script src="/scripts/tracker.js"></script>
+  </body>
+</html>
