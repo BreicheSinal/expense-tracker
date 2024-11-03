@@ -39,7 +39,7 @@ function displayTransaction() {
       <td>${transaction.dateInput}</td>
       <td>${transaction.typeInput}</td>
       <td>${transaction.nameInput}</td>
-      <td>${transaction.amountInput}</td>
+      <td>$ ${transaction.amountInput}</td>
       <td>${transaction.noteInput}</td>
       <td><button class="tableBttn full-width" onclick="editTransaction(${id})">Edit</button></td>
       <td><button class="tableBttn full-width" onclick="deleteTransaction(${id})">Delete</button></td>
@@ -47,14 +47,14 @@ function displayTransaction() {
     transactionsList.appendChild(row);
     //console.log(transactions);
   });
-  totalBudget();
+  totalBudget(transactions);
 }
 
 function deleteTransaction(id) {
   transactions.splice(id, 1);
   saveTransactions();
   displayTransaction();
-  totalBudget();
+  totalBudget(transactions);
 }
 
 function editTransaction(id) {
@@ -69,16 +69,19 @@ function editTransaction(id) {
   deleteTransaction(id);
 }
 
-function totalBudget() {
+function totalBudget(transactions) {
   let totalTransactions = 0;
 
-  transactions.forEach((transaction) => {
-    let input = Number(transaction.amountInput);
-    totalTransactions += input;
-    //console.log(totalTransactions);
+  if (transactions.length == 0) total.innerHTML = "$ 0";
+  else {
+    transactions.forEach((transaction) => {
+      let input = Number(transaction.amountInput);
+      totalTransactions += input;
+      //console.log(totalTransactions);
 
-    total.innerHTML = totalTransactions;
-  });
+      total.innerHTML = `$ ${totalTransactions}`;
+    });
+  }
 }
 
 function displayfiltered(filteredTransaction) {
@@ -101,7 +104,7 @@ function displayfiltered(filteredTransaction) {
     transactionsList.appendChild(row);
     //console.log(transactions);
   });
-  totalBudget();
+  totalBudget(filteredTransaction);
 }
 
 applyBttn.addEventListener("click", () => {
@@ -143,8 +146,8 @@ applyBttn.addEventListener("click", () => {
 function checkType(id, transactions) {
   return transactions.filter((transaction) => {
     if (id == 0) return true;
-    if (id == 1) return transaction.typeInput === "income";
-    if (id == 2) return transaction.typeInput === "expense";
+    if (id == 1) return transaction.typeInput === "Income";
+    if (id == 2) return transaction.typeInput === "Expense";
   });
 }
 
