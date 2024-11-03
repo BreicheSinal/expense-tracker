@@ -81,13 +81,13 @@ function totalBudget() {
   });
 }
 
-function displayfiltered(filteredTransaction) {
+function displayfiltered(filteredTransactions) {
   // RESET LIST
   transactionsList.innerHTML = "";
-  console.log(filteredTransaction);
+  console.log(filteredTransactions);
 
   // ADD ALL TRANSACTIONS
-  filteredTransaction.forEach((transaction, id) => {
+  filteredTransactions.forEach((transaction, id) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${transaction.dateInput}</td>
@@ -104,40 +104,55 @@ function displayfiltered(filteredTransaction) {
   totalBudget();
 }
 
-// ARRAY FILTER
-function checkType(id) {
-  console.log(id);
-  let filtered = [];
-  transactions.forEach((transaction) => {
-    if (id == 0) {
-      filtered.push(transaction);
-      displayfiltered(filtered);
-    } else if (id == 1 && transaction.typeInput == "income") {
-      filtered.push(transaction);
-      displayfiltered(filtered);
-    } else if (id == 2 && transaction.typeInput == "expense") {
-      filtered.push(transaction);
-      displayfiltered(filtered);
-    }
-  });
-  //console.log(transactions);
-  //console.log(filtered);
-}
-
 applyBttn.addEventListener("click", () => {
   const typeFilter = filterType.value;
+  const priceFilter = filterPrice.value;
 
-  if (typeFilter == "All") checkType(0);
-  else if (typeFilter == "Income") checkType(1);
-  else checkType(2);
+  let filteredTransactions = transactions;
+  console.log(filteredTransactions);
+  if (typeFilter == "All")
+    filteredTransactions = checkType(0, filteredTransactions);
+  else if (typeFilter == "Income")
+    filteredTransactions = checkType(1, filteredTransactions);
+  else filteredTransactions = checkType(2, filteredTransactions);
+
+  if (priceFilter == "None")
+    filteredTransactions = checkPrice(0, filteredTransactions);
+  else if (priceFilter == "Minimum")
+    filteredTransactions = checkPrice(1, filteredTransactions);
+  else if (priceFilter == "Maximum")
+    filteredTransactions = checkPrice(2, filteredTransactions);
+
+  console.log(filteredTransactions);
+  displayfiltered(filteredTransactions);
 });
 
-//function filterType() {}
-function checkPrice() {}
-function checkDates() {}
+// ARRAY FILTER
+function checkType(id, transactions) {
+  return transactions.filter((transaction) => {
+    if (id == 0) return true;
+    if (id == 1) return transaction.typeInput === "income";
+    if (id == 2) return transaction.typeInput === "expense";
+  });
+}
+
+// ARRAY SORT
+function checkPrice(id, transactions) {
+  let sortedTransactions = [...transactions];
+
+  if (id == 1) {
+    sortedTransactions.sort((a, b) => a.amountInput - b.amountInput);
+  } else if (id == 2) {
+    sortedTransactions.sort((a, b) => b.amountInput - a.amountInput);
+  }
+
+  return sortedTransactions;
+}
+
+function checkDate() {}
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();
-totalBudget();
+//totalBudget();
 //console.log(transactions);
 //localStorage.clear();
