@@ -81,13 +81,13 @@ function totalBudget() {
   });
 }
 
-function displayfiltered(filteredTransactions) {
+function displayfiltered(filteredTransaction) {
   // RESET LIST
   transactionsList.innerHTML = "";
-  console.log(filteredTransactions);
+  console.log(filteredTransaction);
 
   // ADD ALL TRANSACTIONS
-  filteredTransactions.forEach((transaction, id) => {
+  filteredTransaction.forEach((transaction, id) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${transaction.dateInput}</td>
@@ -107,9 +107,11 @@ function displayfiltered(filteredTransactions) {
 applyBttn.addEventListener("click", () => {
   const typeFilter = filterType.value;
   const priceFilter = filterPrice.value;
+  const dateFilter = filterDate.value;
 
   let filteredTransactions = transactions;
   console.log(filteredTransactions);
+
   if (typeFilter == "All")
     filteredTransactions = checkType(0, filteredTransactions);
   else if (typeFilter == "Income")
@@ -124,6 +126,16 @@ applyBttn.addEventListener("click", () => {
     filteredTransactions = checkPrice(2, filteredTransactions);
 
   console.log(filteredTransactions);
+
+  if (dateFilter == "None")
+    filteredTransactions = checkDate(0, filteredTransactions);
+  else if (dateFilter == "Earliest")
+    filteredTransactions = checkDate(1, filteredTransactions);
+  else if (dateFilter == "Latest")
+    filteredTransactions = checkDate(2, filteredTransactions);
+
+  console.log(filteredTransactions); //problem in checkDate
+
   displayfiltered(filteredTransactions);
 });
 
@@ -149,7 +161,24 @@ function checkPrice(id, transactions) {
   return sortedTransactions;
 }
 
-function checkDate() {}
+// ARRAY SORT
+function checkDate(id, transactions) {
+  if (id === 0) return transactions;
+
+  let sortedTransactions = [...transactions];
+
+  if (id === 1) {
+    return sortedTransactions.sort((a, b) =>
+      a.dateInput.localeCompare(b.dateInput)
+    );
+  } else if (id === 2) {
+    return sortedTransactions.sort((b, a) =>
+      a.dateInput.localeCompare(b.dateInput)
+    );
+  }
+
+  console.log(sortedTransactions);
+}
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();
