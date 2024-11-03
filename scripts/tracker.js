@@ -9,7 +9,7 @@ function addExpense() {
   const noteInput = note.value;
 
   if (!dateInput || !nameInput || !amountInput || !nameInput) {
-    alert("PLEAE FILL ALL FIELDS");
+    alert("PLEASE FILL ALL FIELDS");
   } else {
     transactions.push({
       dateInput,
@@ -80,6 +80,10 @@ function totalBudget() {
     total.innerHTML = totalTransactions;
   });
 }
+
+function checkType() {}
+function checkPrice() {}
+function checkDates() {}
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();

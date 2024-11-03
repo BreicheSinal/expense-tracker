@@ -6,22 +6,27 @@
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/fonts.css" />
     <link rel="stylesheet" href="/styles/index.css" />
-
+    <link
+      size="16x16"
+      rel="icon"
+      href="/assets/icons/LOGO.png"
+      type="image/png"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker | Login</title>
   </head>
-  <body>
+  <body style="background-color: #c9e7ff;">
     <div class="full-viewport">
-      <img
-        src="/assets/images/background.jpg"
+      <!--<img
+        src="/assets/images/BG.png"
         alt="Background"
         class="full-size overflow-hidden relative-position"
-      />
+      />-->
 
-      <div id="errorMsg" class="center errorMsg primary-color"></div>
+      <div id="errorMsg" class="center errorMsg text-align bold primary-bgColor white-color"></div>
 
-      <div class="flex column center white-color login">
+      <div class="flex column center login white-bgColor">
         <img
           src="/assets/icons/LOGO.png"
           alt="LOGO"
@@ -29,17 +34,18 @@
           height="100px"
           class="align-self"
         />
-        <div class="flex column gap">
+        <div class="flex column gap primary-color">
           <p>Usename</p>
           <input type="text" placeholder="Username" id="username"/>
         </div>
 
-        <div class="flex column gap">
+        <div class="flex column gap primary-color">
           <p>Password</p>
           <input type="password" placeholder="Password" id="password" />
         </div>
 
-        <button id="loginBttn">
+        <div><hr style="margin-top: 10px;" class="primary-bgColor"></div>
+        <button class="button white-color" id="loginBttn">
             LOG IN
         </button>
     </div>
