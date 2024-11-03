@@ -16,10 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
   </head>
-  <body>
-    <section class="full-viewport flex">
+  <body class="full-size">
+    <section class="full-width flex">
       <div
-        class="sidebar flex column full-height primary-bgColor space-evenly align-center"
+        class="sidebar flex column primary-bgColor space-evenly align-center"
       >
         <img
           src="/assets/icons/income.png"
@@ -73,7 +73,7 @@
                 <option value="Earliest">Earliest</option>
               </select>
             </div>
-            <button class="button">Apply</button>
+            <button class="button" id="applyBttn">Apply</button>
           </div>
         </div>
 
@@ -86,7 +86,7 @@
             <p class="bold">TYPE</p>
             <select id="typeTransaction">
               <option value="income">INCOME</option>
-              <option value="income">EXPENSE</option>
+              <option value="expense">EXPENSE</option>
             </select>
           </div>
           <div>

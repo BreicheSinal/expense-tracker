@@ -9,6 +9,9 @@ const expenseBttn = document.getElementById("expenseBttn");
 const incomeBttn = document.getElementById("incomeBttn");
 const totalBttn = document.getElementById("totalBttn");
 const addBttn = document.getElementById("addBttn");
+const applyBttn = document.getElementById("applyBttn");
+
+const filterType = document.getElementById("filterType");
 
 const date = document.getElementById("dateTransaction");
 const type = document.getElementById("typeTransaction");

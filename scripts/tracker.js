@@ -45,7 +45,7 @@ function displayTransaction() {
       <td><button class="tableBttn full-width" onclick="deleteTransaction(${id})">Delete</button></td>
       `;
     transactionsList.appendChild(row);
-    console.log(transactions);
+    //console.log(transactions);
   });
   totalBudget();
 }
@@ -75,13 +75,64 @@ function totalBudget() {
   transactions.forEach((transaction) => {
     let input = Number(transaction.amountInput);
     totalTransactions += input;
-    console.log(totalTransactions);
+    //console.log(totalTransactions);
 
     total.innerHTML = totalTransactions;
   });
 }
 
-function checkType() {}
+function displayfiltered(filteredTransaction) {
+  // RESET LIST
+  transactionsList.innerHTML = "";
+  console.log(filteredTransaction);
+
+  // ADD ALL TRANSACTIONS
+  filteredTransaction.forEach((transaction, id) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${transaction.dateInput}</td>
+      <td>${transaction.typeInput}</td>
+      <td>${transaction.nameInput}</td>
+      <td>${transaction.amountInput}</td>
+      <td>${transaction.noteInput}</td>
+      <td><button class="tableBttn full-width" onclick="editTransaction(${id})">Edit</button></td>
+      <td><button class="tableBttn full-width" onclick="deleteTransaction(${id})">Delete</button></td>
+      `;
+    transactionsList.appendChild(row);
+    //console.log(transactions);
+  });
+  totalBudget();
+}
+
+// ARRAY FILTER
+function checkType(id) {
+  console.log(id);
+  let filtered = [];
+  transactions.forEach((transaction) => {
+    if (id == 0) {
+      filtered.push(transaction);
+      displayfiltered(filtered);
+    } else if (id == 1 && transaction.typeInput == "income") {
+      filtered.push(transaction);
+      displayfiltered(filtered);
+    } else if (id == 2 && transaction.typeInput == "expense") {
+      filtered.push(transaction);
+      displayfiltered(filtered);
+    }
+  });
+  //console.log(transactions);
+  //console.log(filtered);
+}
+
+applyBttn.addEventListener("click", () => {
+  const typeFilter = filterType.value;
+
+  if (typeFilter == "All") checkType(0);
+  else if (typeFilter == "Income") checkType(1);
+  else checkType(2);
+});
+
+//function filterType() {}
 function checkPrice() {}
 function checkDates() {}
 
