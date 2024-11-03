@@ -21,6 +21,7 @@
   padding: 25px;
   border-radius: 10px;
   width: 450px;
+  z-index: 1;
 }
 
 .login > button {
