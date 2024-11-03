@@ -34,17 +34,25 @@ function displayTransaction() {
 
   // ADD ALL TRANSACTIONS
   transactions.forEach((transaction, id) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
+    const row1 = document.createElement("tr");
+    const row2 = document.createElement("tr");
+
+    row1.innerHTML = `
       <td>${transaction.dateInput}</td>
       <td>${transaction.typeInput}</td>
       <td>${transaction.nameInput}</td>
-      <td>$ ${transaction.amountInput}</td>
+      <td>$ ${Number(transaction.amountInput).toLocaleString()}</td>
       <td>${transaction.noteInput}</td>
-      <td><button class="tableBttn full-width" onclick="editTransaction(${id})">Edit</button></td>
-      <td><button class="tableBttn full-width" onclick="deleteTransaction(${id})">Delete</button></td>
-      `;
-    transactionsList.appendChild(row);
+      <td><button class="tableBttn edit full-width" onclick="editTransaction(${id})"> <img src="/assets/icons/edit.png" width="20px" height="20px"/> </button></td>
+      <td><button class="tableBttn delete full-width" onclick="deleteTransaction(${id})"> <img src="/assets/icons/delete.png" width="20px" height="20px"/> </button></td>
+    `;
+
+    row2.innerHTML = `
+      <td colspan="7"><hr class="colorHr"></td>
+    `;
+
+    transactionsList.appendChild(row2);
+    transactionsList.appendChild(row1);
     //console.log(transactions);
   });
   totalBudget(transactions);
@@ -79,7 +87,8 @@ function totalBudget(transactions) {
       totalTransactions += input;
       //console.log(totalTransactions);
 
-      total.innerHTML = `$ ${totalTransactions}`;
+      // toLocalString to add commas
+      total.innerHTML = `$ ${totalTransactions.toLocaleString()}`;
     });
   }
 }
@@ -91,17 +100,26 @@ function displayfiltered(filteredTransaction) {
 
   // ADD ALL TRANSACTIONS
   filteredTransaction.forEach((transaction, id) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
+    const row1 = document.createElement("tr");
+    const row2 = document.createElement("tr");
+
+    row1.innerHTML = `
       <td>${transaction.dateInput}</td>
       <td>${transaction.typeInput}</td>
       <td>${transaction.nameInput}</td>
-      <td>${transaction.amountInput}</td>
+      <td>$ ${Number(transaction.amountInput).toLocaleString()}</td>
       <td>${transaction.noteInput}</td>
-      <td><button class="tableBttn full-width" onclick="editTransaction(${id})">Edit</button></td>
-      <td><button class="tableBttn full-width" onclick="deleteTransaction(${id})">Delete</button></td>
+      <td><button class="tableBttn edit full-width" onclick="editTransaction(${id})"> <img src="/assets/icons/edit.png" width="20px" height="20px"/> </button></td>
+      <td><button class="tableBttn delete full-width" onclick="deleteTransaction(${id})"> <img src="/assets/icons/delete.png" width="20px" height="20px"/> </button></td>
       `;
-    transactionsList.appendChild(row);
+
+    row2.innerHTML = `
+      <td colspan="7"><hr class="colorHr"></td>
+    `;
+
+    transactionsList.appendChild(row2);
+    transactionsList.appendChild(row1);
+
     //console.log(transactions);
   });
   totalBudget(filteredTransaction);

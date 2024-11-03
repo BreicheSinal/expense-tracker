@@ -45,8 +45,20 @@ td {
 }
 
 .tableBttn {
+  background-color: white;
   padding: 2px;
-  border-color: rgb(255, 0, 0);
+}
+
+hr.colorHr {
+  border: 1px solid #00599c;
+}
+
+.edit:hover {
+  background-color: rgb(161, 255, 161);
+}
+
+.delete:hover {
+  background-color: rgb(255, 175, 175);
 }
 
 .total > tbody > tr > td {
