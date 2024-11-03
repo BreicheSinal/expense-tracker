@@ -17,3 +17,4 @@ const amount = document.getElementById("amountTransaction");
 const note = document.getElementById("noteTransaction");
 
 const transactionsList = document.getElementById("transactions");
+const total = document.getElementById("total$");

@@ -47,12 +47,14 @@ function displayTransaction() {
     transactionsList.appendChild(row);
     console.log(transactions);
   });
+  totalBudget();
 }
 
 function deleteTransaction(id) {
   transactions.splice(id, 1);
   saveTransactions();
   displayTransaction();
+  totalBudget();
 }
 
 function editTransaction(id) {
@@ -67,7 +69,20 @@ function editTransaction(id) {
   deleteTransaction(id);
 }
 
+function totalBudget() {
+  let totalTransactions = 0;
+
+  transactions.forEach((transaction) => {
+    let input = Number(transaction.amountInput);
+    totalTransactions += input;
+    console.log(totalTransactions);
+
+    total.innerHTML = totalTransactions;
+  });
+}
+
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();
+totalBudget();
 //console.log(transactions);
 //localStorage.clear();

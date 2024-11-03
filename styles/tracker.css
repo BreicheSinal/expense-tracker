@@ -23,14 +23,6 @@
   margin-bottom: 10px;
 }
 
-td {
-  text-align: center;
-}
-
-tr {
-  border: 1px solid #00599c;
-}
-
 table {
   margin-top: 10px;
   border: 3px solid #00599c;
@@ -40,7 +32,19 @@ table th {
   border: 3px solid #00599c;
 }
 
+tr {
+  border: 1px solid #00599c;
+}
+
+td {
+  text-align: center;
+}
+
 .tableBttn {
   padding: 2px;
   border-color: rgb(255, 0, 0);
+}
+
+.total > tbody > tr > td {
+  width: 30%;
 }
