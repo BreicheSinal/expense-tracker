@@ -21,6 +21,7 @@ const applyBttn = document.getElementById("applyBttn");
 const filterType = document.getElementById("filterType");
 const filterPrice = document.getElementById("filterPrice");
 const filterDate = document.getElementById("filterDate");
+const filterNote = document.getElementById("filterNote");
 
 // INPUTS
 const date = document.getElementById("dateTransaction");

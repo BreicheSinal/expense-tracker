@@ -1,6 +1,24 @@
 let transactions = JSON.parse(localStorage.getItem("transactions"));
+//console.log(transactions);
+
+filterNote.addEventListener("change", function () {
+  const noteInput = filterNote.value.toUpperCase();
+  console.log("Search Term:", noteInput);
+
+  let filtered = [];
+  transactions.forEach((transaction) => {
+    let notes = transaction.noteInput
+      ? transaction.noteInput.toUpperCase()
+      : "";
+    if (notes.includes(noteInput)) filtered.push(transaction);
+    else displayTransaction(transactions);
+  });
+
+  displayfiltered(filtered);
+});
 
 addBttn.addEventListener("click", addExpense);
+
 function addExpense() {
   const dateInput = date.value;
   const typeInput = type.value;
@@ -201,7 +219,20 @@ function checkDate(id, transactions) {
   console.log(sortedTransactions);
 }
 
-function checkNote(id, transactions) {}
+/*function noteFilter(displayedTransactions) {
+  let filtered = [];
+  const noteInput = filterNote.value;
+  console.log(noteInput);
+
+  const upperCaseNote = noteInput.toUpperCase();
+  console.log(upperCaseNote);
+
+  displayedTransactions.forEach((transaction) => {
+    let notes = transaction.note.toUpperCase();
+    if (upperCaseNote == notes) filtered.push(transaction);
+    displayfiltered(filtered);
+  });
+}*/
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();
