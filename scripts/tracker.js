@@ -1,4 +1,4 @@
-let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+let transactions = JSON.parse(localStorage.getItem("transactions"));
 
 addBttn.addEventListener("click", addExpense);
 function addExpense() {
@@ -200,6 +200,8 @@ function checkDate(id, transactions) {
 
   console.log(sortedTransactions);
 }
+
+function checkNote(id, transactions) {}
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();

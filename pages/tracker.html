@@ -50,7 +50,7 @@
           <h1 class="primary-color">EXPENSE TRACKER</h1>
           <div class="flex gap justify-center align-center">
             <div>
-              <p class="bold">TYPE FILTER</p>
+              <p class="bold">TYPE</p>
               <select id="filterType">
                 <option value="All">All</option>
                 <option value="Income">Income</option>
@@ -58,7 +58,7 @@
               </select>
             </div>
             <div>
-              <p class="bold">PRICE FILTER</p>
+              <p class="bold">PRICE</p>
               <select id="filterPrice">
                 <option value="None">None</option>
                 <option value="Minimum">Minimum</option>
@@ -66,14 +66,18 @@
               </select>
             </div>
             <div>
-              <p class="bold">DATE FILTER</p>
+              <p class="bold">DATE</p>
               <select id="filterDate">
                 <option value="None">None</option>
                 <option value="Earliest">Earliest</option>
                 <option value="Latest">Latest</option>
               </select>
             </div>
-            <button class="button" id="applyBttn">Apply</button>
+            <div>
+              <p class="bold">NOTE</p>
+              <input type="text" placeholder="Search note..." />
+            </div>
+            <button class="button" id="applyBttn">Apply Filters</button>
           </div>
         </div>
 
