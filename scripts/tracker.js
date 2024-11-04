@@ -1,9 +1,7 @@
-let transactions = JSON.parse(localStorage.getItem("transactions"));
-//console.log(transactions);
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 filterNote.addEventListener("change", function () {
   const noteInput = filterNote.value.toUpperCase();
-  console.log("Search Term:", noteInput);
 
   let filtered = [];
   transactions.forEach((transaction) => {
@@ -36,7 +34,6 @@ function addExpense() {
       amountInput,
       noteInput,
     });
-    console.log(transactions);
     displayTransaction();
     saveTransactions();
   }
@@ -71,7 +68,6 @@ function displayTransaction() {
 
     transactionsList.appendChild(row2);
     transactionsList.appendChild(row1);
-    //console.log(transactions);
   });
   totalBudget(transactions);
 }
@@ -97,24 +93,29 @@ function editTransaction(id) {
 
 function totalBudget(transactions) {
   let totalTransactions = 0;
+  let expense = 0;
+  let income = 0;
 
-  if (transactions.length == 0) total.innerHTML = "$ 0";
-  else {
+  if (transactions.length === 0) {
+    total.innerHTML = "$ 0";
+  } else {
     transactions.forEach((transaction) => {
-      let input = Number(transaction.amountInput);
-      totalTransactions += input;
-      //console.log(totalTransactions);
-
-      // toLocalString to add commas
-      total.innerHTML = `$ ${totalTransactions.toLocaleString()}`;
+      if (transaction.typeInput === "Expense") {
+        expense += transaction.amountInput;
+      } else if (transaction.typeInput === "Income") {
+        income += transaction.amountInput;
+      }
     });
+
+    totalTransactions = income - expense;
+
+    total.innerHTML = `$ ${totalTransactions.toLocaleString()}`;
   }
 }
 
 function displayfiltered(filteredTransaction) {
   // RESET LIST
   transactionsList.innerHTML = "";
-  console.log(filteredTransaction);
 
   // ADD ALL TRANSACTIONS
   filteredTransaction.forEach((transaction, id) => {
@@ -137,8 +138,6 @@ function displayfiltered(filteredTransaction) {
 
     transactionsList.appendChild(row2);
     transactionsList.appendChild(row1);
-
-    //console.log(transactions);
   });
   totalBudget(filteredTransaction);
 }
@@ -149,7 +148,6 @@ applyBttn.addEventListener("click", () => {
   const dateFilter = filterDate.value;
 
   let filteredTransactions = transactions;
-  console.log(filteredTransactions);
 
   if (typeFilter == "All")
     filteredTransactions = checkType(0, filteredTransactions);
@@ -164,16 +162,12 @@ applyBttn.addEventListener("click", () => {
   else if (priceFilter == "Maximum")
     filteredTransactions = checkPrice(2, filteredTransactions);
 
-  console.log(filteredTransactions);
-
   if (dateFilter == "None")
     filteredTransactions = checkDate(0, filteredTransactions);
   else if (dateFilter == "Earliest")
     filteredTransactions = checkDate(1, filteredTransactions);
   else if (dateFilter == "Latest")
     filteredTransactions = checkDate(2, filteredTransactions);
-
-  console.log(filteredTransactions); //problem in checkDate
 
   displayfiltered(filteredTransactions);
 });
@@ -215,27 +209,9 @@ function checkDate(id, transactions) {
       a.dateInput.localeCompare(b.dateInput)
     );
   }
-
-  console.log(sortedTransactions);
 }
-
-/*function noteFilter(displayedTransactions) {
-  let filtered = [];
-  const noteInput = filterNote.value;
-  console.log(noteInput);
-
-  const upperCaseNote = noteInput.toUpperCase();
-  console.log(upperCaseNote);
-
-  displayedTransactions.forEach((transaction) => {
-    let notes = transaction.note.toUpperCase();
-    if (upperCaseNote == notes) filtered.push(transaction);
-    displayfiltered(filtered);
-  });
-}*/
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();
-//totalBudget();
-//console.log(transactions);
+
 //localStorage.clear();
