@@ -77,46 +77,40 @@
           </div>
         </div>
 
-        <div class="flex space-between">
-          <div class="flex align-center gap">
-            <div>
-              <p class="bold">DATE</p>
-              <input type="date" id="dateTransaction" />
-            </div>
-            <div>
-              <p class="bold">TYPE</p>
-              <select id="typeTransaction">
-                <option value="Income">INCOME</option>
-                <option value="Expense">EXPENSE</option>
-              </select>
-            </div>
-            <div>
-              <p class="bold">NAME</p>
-              <input
-                type="text"
-                id="nameTransaction"
-                placeholder="Transaction Name"
-              />
-            </div>
-            <div>
-              <p class="bold">AMOUNT</p>
-              <input
-                type="number"
-                id="amountTransaction"
-                placeholder="Amount"
-              />
-            </div>
-            <div>
-              <p class="bold">NOTE</p>
-              <input type="text" id="noteTransaction" placeholder="Notes" />
-            </div>
-            <button class="button" id="addBttn">ADD</button>
-          </div>
+        <div class="flex align-center gap search-bar">
+          <p class="bold">SEARCH NOTE</p>
+          <input type="text" placeholder="Search note..." id="filterNote" />
+        </div>
 
+        <div class="flex align-center gap">
+          <div>
+            <p class="bold">DATE</p>
+            <input type="date" id="dateTransaction" />
+          </div>
+          <div>
+            <p class="bold">TYPE</p>
+            <select id="typeTransaction">
+              <option value="Income">INCOME</option>
+              <option value="Expense">EXPENSE</option>
+            </select>
+          </div>
+          <div>
+            <p class="bold">NAME</p>
+            <input
+              type="text"
+              id="nameTransaction"
+              placeholder="Transaction Name"
+            />
+          </div>
+          <div>
+            <p class="bold">AMOUNT</p>
+            <input type="number" id="amountTransaction" placeholder="Amount" />
+          </div>
           <div>
             <p class="bold">NOTE</p>
-            <input type="text" placeholder="Search note..." id="filterNote" />
+            <input type="text" id="noteTransaction" placeholder="Notes" />
           </div>
+          <button class="button" id="addBttn">ADD</button>
         </div>
 
         <table class="full-width">
@@ -138,7 +132,7 @@
           <tbody>
             <tr>
               <td class="primary-bgColor white-color bold">TOTA BUDGET</td>
-              <td id="total$">0</td>
+              <td class="bold primary-color" id="total$">0</td>
             </tr>
           </tbody>
         </table>

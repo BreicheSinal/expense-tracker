@@ -24,11 +24,14 @@ body > section {
 
 .container > div > h1 {
   font-size: 50px;
-  margin-bottom: 10px;
 }
 
-table {
+.search-bar {
   margin-top: 10px;
+  align-self: flex-end;
+}
+table {
+  margin-top: 15px;
   border: 3px solid #00599c;
 }
 
