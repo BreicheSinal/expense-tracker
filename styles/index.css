@@ -1,3 +1,7 @@
+body{
+  background-color: #c9e7ff;
+}
+
 .login {
   gap: 20px;
   border: 1px solid #ddd;

@@ -1,5 +1,6 @@
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
+// NOTE FILTER FUNCTION
 filterNote.addEventListener("change", function () {
   const noteInput = filterNote.value.toUpperCase();
 
@@ -17,6 +18,7 @@ filterNote.addEventListener("change", function () {
 
 addBttn.addEventListener("click", addExpense);
 
+// ADD TRANSACTION FUNCTION (INCOME - EXPENSE)
 function addExpense() {
   const dateInput = date.value;
   const typeInput = type.value;
@@ -39,10 +41,12 @@ function addExpense() {
   }
 }
 
+// SAVING TRANSACTION FUNCTION
 function saveTransactions() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
+// DISPLAYING TRANSACTION FUNCTION
 function displayTransaction() {
   // RESET LIST
   transactionsList.innerHTML = "";
@@ -72,6 +76,7 @@ function displayTransaction() {
   totalBudget(transactions);
 }
 
+// DELETING TRANSACTION FUNCTION
 function deleteTransaction(id) {
   transactions.splice(id, 1);
   saveTransactions();
@@ -79,6 +84,7 @@ function deleteTransaction(id) {
   totalBudget(transactions);
 }
 
+// EDITING A TRANSACTION FUNCTION
 function editTransaction(id) {
   const transaction = transactions[id];
 
@@ -91,6 +97,7 @@ function editTransaction(id) {
   deleteTransaction(id);
 }
 
+// TOTAL BUDGET FUNCTION (INCOME - EXPENSE)
 function totalBudget(transactions) {
   let totalTransactions = 0;
   let expense = 0;
@@ -113,6 +120,7 @@ function totalBudget(transactions) {
   }
 }
 
+// DISPLAYING TRANSACTION AFTER APPLYINF FILTERS
 function displayfiltered(filteredTransaction) {
   // RESET LIST
   transactionsList.innerHTML = "";
@@ -142,6 +150,7 @@ function displayfiltered(filteredTransaction) {
   totalBudget(filteredTransaction);
 }
 
+// EVENT LISTENER FOR APPLY FILTERS BUTTON
 applyBttn.addEventListener("click", () => {
   const typeFilter = filterType.value;
   const priceFilter = filterPrice.value;
@@ -213,5 +222,3 @@ function checkDate(id, transactions) {
 
 // DISPLAYS TRANSACTION ON RELOAD
 displayTransaction();
-
-//localStorage.clear();
